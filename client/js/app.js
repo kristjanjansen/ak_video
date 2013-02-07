@@ -23,7 +23,7 @@ socket.on('message', function (data) {
     if (data.vol > 0) {
   //    keys[data.key].popcorn.unmute();
       keys[data.key].popcorn.currentTime(keys[data.key].start);
-  //    keys[data.key].popcorn.play();
+      keys[data.key].popcorn.play();
     } else {
   //    keys[data.key].popcorn.mute();
       keys[data.key].popcorn.pause();
