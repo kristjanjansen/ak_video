@@ -11,7 +11,9 @@ app.route('/*').files(__dirname + '/client');
 app.httpServer.listen(8000)
 
 var input = new midi.input();
-input.openVirtualPort("Test Input");
+
+//input.openVirtualPort("Test Input");
+input.openPort(1);
 
 app.sockets.on('connection', function (socket) {
   
