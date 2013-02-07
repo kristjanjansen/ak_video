@@ -16,7 +16,7 @@ for (var key in keys) {
 };
 
 
-var socket = io.connect('http://localhost:8000');
+var socket = io.connect();
 
 socket.on('message', function (data) {
   if (keys[data.key]) {
