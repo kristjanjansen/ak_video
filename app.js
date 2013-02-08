@@ -5,6 +5,7 @@ var app = tako()
 
 var midi = require('midi');
 
+app.route('/2').file(__dirname + '/client/index2.html');
 app.route('/').file(__dirname + '/client/index.html');
 app.route('/*').files(__dirname + '/client');
 
