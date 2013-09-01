@@ -1,17 +1,13 @@
 var fs = require('fs');
 var path = require('path');
-
 var midi = require('midi');
-
 var express = require('express')
+
 var app = new express()
 var server = require('http').createServer(app)
 var io = require('socket.io').listen(server);
-
-var port = 8000
-
 app.use(express.static(path.join(__dirname, 'client')))
-server.listen(port)
+server.listen(8000)
 
 var input = new midi.input();
 input.openPort(0);
