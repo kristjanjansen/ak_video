@@ -3,7 +3,7 @@ $(function() {
 var keys = {
   72  : {
     'video': 'http://www.youtube.com/watch?v=oHg5SJYRHA0',
-    'start': 60
+    'start': 4
   },
   74  : {
     'video': 'http://www.youtube.com/watch?v=yBwD4iYcWC4',

@@ -9,8 +9,10 @@ var io = require('socket.io').listen(server);
 app.use(express.static(path.join(__dirname, 'client')))
 server.listen(8000)
 
+var midiPort = process.argv[2] ? parseInt(process.argv[2]) : 0
+
 var input = new midi.input();
-input.openPort(0);
+input.openPort(midiPort);
 
 io.sockets.on('connection', function (socket) {
   
