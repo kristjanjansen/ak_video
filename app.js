@@ -1,24 +1,25 @@
 var fs = require('fs');
-
-var tako = require('tako')
-var app = tako()
+var path = require('path');
 
 var midi = require('midi');
 
-app.route('/').file(__dirname + '/client/index.html');
-app.route('/*').files(__dirname + '/client');
+var express = require('express')
+var app = new express()
+var server = require('http').createServer(app)
+var io = require('socket.io').listen(server);
 
-app.httpServer.listen(8000)
+var port = 8000
+
+app.use(express.static(path.join(__dirname, 'client')))
+server.listen(port)
 
 var input = new midi.input();
+input.openPort(0);
 
-//input.openVirtualPort("Test Input");
-input.openPort(1);
-
-app.sockets.on('connection', function (socket) {
+io.sockets.on('connection', function (socket) {
   
   input.on('message', function(deltaTime, message) {
-    app.sockets.emit('message', { key: message[1], vol: message[2]});
+    socket.emit('message', { key: message[1], vol: message[2]});
     console.log(message)
   });
 
